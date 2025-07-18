@@ -98,7 +98,7 @@ const Notification = ({ name, description, icon, color, time }: Notification) =>
 
 export function SneakPeek() {
   return (
-    <div className="relative flex h-[500px] w-full flex-col p-6 overflow-hidden rounded-lg border bg-background md:shadow-xl">
+    <div className="relative flex h-[500px] w-full flex-col items-center justify-center">
       <AnimatedList
         items={notifications.map((notification, idx) => (
           <Notification {...notification} key={idx} />
@@ -107,6 +107,7 @@ export function SneakPeek() {
         enableArrowNavigation={false}
         displayScrollbar={false}
         gradientColor="from-background"
+        className="mx-auto"
       />
     </div>
   );

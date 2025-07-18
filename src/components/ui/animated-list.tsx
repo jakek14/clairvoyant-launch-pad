@@ -90,6 +90,25 @@ export const AnimatedList: FC<AnimatedListProps> = ({
   const [keyboardNav, setKeyboardNav] = useState<boolean>(false);
   const [topGradientOpacity, setTopGradientOpacity] = useState<number>(0);
   const [bottomGradientOpacity, setBottomGradientOpacity] = useState<number>(1);
+  const [visibleItems, setVisibleItems] = useState<React.ReactNode[]>([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Continuous animation effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % items.length);
+    }, 2000); // Add new item every 2 seconds
+
+    return () => clearInterval(interval);
+  }, [items.length]);
+
+  // Update visible items based on current index
+  useEffect(() => {
+    const maxVisible = 3; // Show max 3 items at once
+    const startIndex = Math.max(0, currentIndex - maxVisible + 1);
+    const endIndex = currentIndex + 1;
+    setVisibleItems(items.slice(startIndex, endIndex));
+  }, [currentIndex, items]);
 
   const handleScroll = (e: UIEvent<HTMLDivElement>) => {
     if (!listRef.current) return;
@@ -114,7 +133,7 @@ export const AnimatedList: FC<AnimatedListProps> = ({
         }
     }, 0);
     return () => clearTimeout(timer);
-  }, [items]); 
+  }, [visibleItems]); 
 
 
   useEffect(() => {
@@ -122,21 +141,21 @@ export const AnimatedList: FC<AnimatedListProps> = ({
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowDown" || (e.key === "Tab" && !e.shiftKey)) {
         e.preventDefault(); setKeyboardNav(true);
-        setSelectedIndex((prev) => Math.min(prev + 1, items.length - 1));
+        setSelectedIndex((prev) => Math.min(prev + 1, visibleItems.length - 1));
       } else if (e.key === "ArrowUp" || (e.key === "Tab" && e.shiftKey)) {
         e.preventDefault(); setKeyboardNav(true);
         setSelectedIndex((prev) => Math.max(prev - 1, 0));
       } else if (e.key === "Enter") {
-        if (selectedIndex >= 0 && selectedIndex < items.length) {
+        if (selectedIndex >= 0 && selectedIndex < visibleItems.length) {
           e.preventDefault();
-          if (onItemSelect) onItemSelect(items[selectedIndex], selectedIndex);
+          if (onItemSelect) onItemSelect(visibleItems[selectedIndex], selectedIndex);
         }
       }
     };
     const targetElement = listRef.current || window;
     targetElement.addEventListener("keydown", handleKeyDown as EventListener);
     return () => targetElement.removeEventListener("keydown", handleKeyDown as EventListener);
-  }, [items, selectedIndex, onItemSelect, enableArrowNavigation]);
+  }, [visibleItems, selectedIndex, onItemSelect, enableArrowNavigation]);
 
   useEffect(() => {
     if (!keyboardNav || selectedIndex < 0 || !listRef.current) return;
@@ -182,9 +201,9 @@ export const AnimatedList: FC<AnimatedListProps> = ({
         onScroll={handleScroll}
         style={{...firefoxScrollbarStyles}} // Apply Firefox styles directly
       >
-        {items.map((item, index) => (
+        {visibleItems.map((item, index) => (
           <AnimatedItem
-            key={`item-${index}`} 
+            key={`item-${currentIndex - visibleItems.length + index + 1}`} 
             delay={0.05} 
             index={index}
             onMouseEnter={() => { if (document.activeElement !== listRef.current) setSelectedIndex(index);}} 
