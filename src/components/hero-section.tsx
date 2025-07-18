@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils'
 import { InfiniteSlider } from '@/components/ui/infinite-slider'
 import { ProgressiveBlur } from '@/components/ui/progressive-blur'
 import { HyperText } from '@/components/ui/hyper-text'
-import { AnimatedList } from '@/components/ui/animated-list'
+import { RotatingText } from '@/components/ui/animated-list'
 
 
 const dynamicWords = [
@@ -45,15 +45,6 @@ const transitionVariants = {
 
 export function HeroSection() {
     const [email, setEmail] = useState('')
-    const [currentWordIndex, setCurrentWordIndex] = useState(0)
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentWordIndex((prev) => (prev + 1) % dynamicWords.length)
-        }, 3000)
-        
-        return () => clearInterval(interval)
-    }, [])
 
     return (
         <main className="overflow-hidden">
@@ -75,15 +66,11 @@ export function HeroSection() {
                             >
                                 <h1 className="text-balance text-4xl font-medium sm:text-5xl md:text-6xl">
                                     Turn anonymous visitors into{' '}
-                                    <div className="inline-block min-h-[1.2em]">
-                                        <HyperText
-                                            key={currentWordIndex}
-                                            text={dynamicWords[currentWordIndex]}
-                                            className="text-primary font-bold"
-                                            duration={600}
-                                            animateOnLoad={true}
-                                        />
-                                    </div>
+                                    <RotatingText
+                                        words={dynamicWords}
+                                        delay={2500}
+                                        className="text-primary font-bold min-h-[1.2em]"
+                                    />
                                 </h1>
 
                                 <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg text-muted-foreground">
@@ -117,13 +104,6 @@ export function HeroSection() {
                                     </div>
                                 </form>
 
-                <div className="relative mt-16 mx-auto max-w-4xl">
-                    <AnimatedList>
-                        <div key={1}>Item 1</div>
-                        <div key={2}>Item 2</div>
-                        <div key={3}>Item 3</div>
-                    </AnimatedList>
-                </div>
                             </AnimatedGroup>
                         </div>
                     </div>

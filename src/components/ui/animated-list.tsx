@@ -70,3 +70,48 @@ export const AnimatedList = React.memo(
 );
 
 AnimatedList.displayName = "AnimatedList";
+
+// Simpler rotating text component for the hero
+export interface RotatingTextProps {
+  words: string[];
+  delay?: number;
+  className?: string;
+}
+
+export const RotatingText = React.memo(
+  ({ words, delay = 2000, className }: RotatingTextProps) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setCurrentIndex((prev) => (prev + 1) % words.length);
+      }, delay);
+
+      return () => clearInterval(interval);
+    }, [words.length, delay]);
+
+    return (
+      <div className={cn("inline-block", className)}>
+        <AnimatePresence mode="wait">
+          <motion.span
+            key={currentIndex}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{
+              type: "spring",
+              stiffness: 300,
+              damping: 30,
+              duration: 0.3,
+            }}
+            className="inline-block"
+          >
+            {words[currentIndex]}
+          </motion.span>
+        </AnimatePresence>
+      </div>
+    );
+  },
+);
+
+RotatingText.displayName = "RotatingText";
