@@ -15,7 +15,7 @@ export function Footer() {
               <span className="text-xl font-semibold">sera</span>
             </div>
             <p className="text-muted-foreground text-sm max-w-sm">
-              Building the future of private, intelligent technology. Where AI meets uncompromising privacy.
+              Site Email Retargeting Advantage. Transform anonymous website visitors into actionable contact data with our patent-pending platform.
             </p>
           </div>
 
@@ -23,9 +23,10 @@ export function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Company</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link to="#about" className="hover:text-foreground transition-colors">About</Link></li>
-              <li><Link to="#vision" className="hover:text-foreground transition-colors">Vision</Link></li>
-              <li><Link to="#technology" className="hover:text-foreground transition-colors">Technology</Link></li>
+              <li><Link to="#platform" className="hover:text-foreground transition-colors">Platform</Link></li>
+              <li><Link to="#use-cases" className="hover:text-foreground transition-colors">Use Cases</Link></li>
+              <li><Link to="#how-it-works" className="hover:text-foreground transition-colors">How It Works</Link></li>
+              <li><Link to="#pricing" className="hover:text-foreground transition-colors">Pricing</Link></li>
             </ul>
           </div>
 
@@ -45,7 +46,7 @@ export function Footer() {
             © 2024 Sera. All rights reserved.
           </p>
           <p className="text-sm text-muted-foreground mt-4 md:mt-0">
-            Privacy-first intelligence for everyone.
+            Turn anonymous visitors into known customers.
           </p>
         </div>
       </div>

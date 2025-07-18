@@ -1,32 +1,32 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Shield, Brain, Zap, Lock, Users, Sparkles } from 'lucide-react'
+import { Eye, Database, DollarSign, Mail, Users } from 'lucide-react'
 
 const valueProps = [
   {
-    icon: Shield,
-    title: "Privacy by Design",
-    description: "Your data stays yours. Advanced encryption and on-device processing ensure complete privacy without compromising intelligence."
+    icon: Eye,
+    title: "Anonymous Traffic Identification",
+    description: "Track and identify anonymous website visitors using our proprietary pixel technology that matches visitor sessions against our comprehensive opt-in database."
   },
   {
-    icon: Brain,
-    title: "Adaptive Intelligence",
-    description: "AI that learns your patterns and preferences, delivering personalized insights that evolve with your needs."
+    icon: Database,
+    title: "First-Party Data Ownership",
+    description: "Own your matched visitor data forever. No more renting lists from ad platforms—integrate contact information directly into your CRM and marketing tools."
   },
   {
-    icon: Zap,
-    title: "Instant Insights",
-    description: "Real-time analysis and recommendations that help you make better decisions faster, without the wait."
+    icon: DollarSign,
+    title: "Cost-Efficient Retargeting",
+    description: "Pay once for contact information instead of per click. More affordable than traditional retargeting with higher conversion rates and lower ongoing costs."
   },
   {
-    icon: Lock,
-    title: "Zero-Knowledge Architecture",
-    description: "Advanced cryptographic techniques ensure we can provide intelligent services without ever seeing your private data."
+    icon: Mail,
+    title: "Opt-in Compliance",
+    description: "All data comes from permission-based, opt-in sources ensuring full compliance with CAN-SPAM, GDPR, and other privacy regulations."
   },
   {
     icon: Users,
-    title: "Seamless Integration",
-    description: "Works effortlessly with your existing tools and workflows, enhancing rather than replacing your current setup."
+    title: "Multi-Channel Retargeting",
+    description: "Reach customers through email, direct mail, phone, or upload to ad platforms—using contact data you own and control."
   }
 ]
 
@@ -54,7 +54,7 @@ const itemVariants = {
 
 export function ValuePropositions() {
   return (
-    <section id="vision" className="py-24 md:py-32 bg-gradient-to-b from-background to-secondary/30">
+    <section id="platform" className="py-24 md:py-32 bg-gradient-to-b from-background to-secondary/30">
       <div className="mx-auto max-w-6xl px-6">
         <motion.div
           initial="hidden"
@@ -67,14 +67,14 @@ export function ValuePropositions() {
             variants={itemVariants}
             className="text-4xl md:text-5xl font-semibold mb-6"
           >
-            Intelligence that 
-            <span className="text-gradient"> respects you</span>
+            Core 
+            <span className="text-gradient"> Capabilities</span>
           </motion.h2>
           <motion.p 
             variants={itemVariants}
             className="text-lg text-muted-foreground max-w-2xl mx-auto"
           >
-            We're building the future of personal intelligence—where cutting-edge AI meets uncompromising privacy.
+            Transform anonymous website traffic into actionable contact data with our patent-pending platform.
           </motion.p>
         </motion.div>
 

@@ -58,10 +58,10 @@ export function EmailSignup() {
               You're in!
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-              Welcome to the exclusive group of early adopters. We'll share updates, behind-the-scenes insights, and give you first access when we're ready.
+              Welcome to the exclusive group of marketers getting early access to TrySERA. We'll share platform updates, beta access, and implementation guides.
             </p>
             <p className="text-sm text-muted-foreground">
-              Keep an eye on your inbox for our next update.
+              Keep an eye on your inbox for platform demos and beta access.
             </p>
           </motion.div>
         </div>
@@ -80,10 +80,10 @@ export function EmailSignup() {
           className="text-center"
         >
           <h2 className="text-4xl md:text-5xl font-semibold mb-6">
-            Be the first to know
+            Start Identifying Your Visitors Today
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
-            Join our exclusive waitlist and get early access to the future of private, intelligent technology. No spam, just meaningful updates on our progress.
+            Join leading marketers who are already turning anonymous traffic into actionable contact data. Get early access to TrySERA's patent-pending platform.
           </p>
 
           <form onSubmit={handleSubmit} className="max-w-md mx-auto">
@@ -116,21 +116,21 @@ export function EmailSignup() {
           </form>
 
           <p className="text-sm text-muted-foreground mt-6">
-            By joining, you agree to receive updates about our progress. You can unsubscribe at any time.
+            By joining, you agree to receive platform updates and demo invitations. You can unsubscribe at any time.
           </p>
 
           <div className="flex items-center justify-center space-x-8 mt-12 text-sm text-muted-foreground">
             <div className="flex items-center space-x-2">
               <div className="w-2 h-2 bg-green-500 rounded-full" />
-              <span>No spam, ever</span>
+              <span>Free platform demo</span>
             </div>
             <div className="flex items-center space-x-2">
               <div className="w-2 h-2 bg-blue-500 rounded-full" />
-              <span>Early access guaranteed</span>
+              <span>Beta access priority</span>
             </div>
             <div className="flex items-center space-x-2">
               <div className="w-2 h-2 bg-purple-500 rounded-full" />
-              <span>Behind-the-scenes updates</span>
+              <span>Implementation support</span>
             </div>
           </div>
         </motion.div>

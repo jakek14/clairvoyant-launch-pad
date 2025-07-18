@@ -19,8 +19,8 @@ export function HeroSection() {
                     <div className="pb-24 pt-12 md:pb-32 lg:pb-56 lg:pt-44">
                         <div className="relative mx-auto flex max-w-6xl flex-col px-6 lg:block">
                             <div className="mx-auto max-w-lg text-center lg:ml-0 lg:w-1/2 lg:text-left">
-                                <h1 className="mt-8 max-w-2xl text-balance text-5xl font-medium md:text-6xl lg:mt-16 xl:text-7xl">The Future of Intelligence is Personal</h1>
-                                <p className="mt-8 max-w-2xl text-pretty text-lg text-muted-foreground">Privacy-first intelligence that adapts to you. Experience personalized insights without compromising your data.</p>
+                                <h1 className="mt-8 max-w-2xl text-balance text-5xl font-medium md:text-6xl lg:mt-16 xl:text-7xl">Turn Anonymous Visitors Into Known Customers</h1>
+                                <p className="mt-8 max-w-2xl text-pretty text-lg text-muted-foreground">TrySERA identifies your anonymous website visitors and provides their email and postal addresses—even if they never filled out a form. Transform lost traffic into actionable contact data.</p>
 
                                 <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start">
                                     <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
@@ -36,15 +36,17 @@ export function HeroSection() {
                                             size="lg"
                                             className="px-8 text-base hover-lift group h-12">
                                             <Link to="#signup">
-                                                <span className="text-nowrap">Join the Waitlist</span>
+                                                <span className="text-nowrap">Get Early Access</span>
                                                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                                             </Link>
                                         </Button>
                                     </div>
                                 </div>
                             </div>
-                            <div className="pointer-events-none order-first ml-auto w-full lg:absolute lg:inset-0 lg:-right-20 lg:-top-32 lg:order-last lg:w-2/3 flex items-center justify-center">
-                                <IconCloudDemo />
+                            <div className="pointer-events-none order-first ml-auto w-full lg:absolute lg:inset-0 lg:-right-32 lg:-top-16 lg:order-last lg:w-3/4 flex items-center justify-center">
+                                <div className="scale-125 lg:scale-150">
+                                    <IconCloudDemo />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -53,7 +55,7 @@ export function HeroSection() {
                     <div className="group relative m-auto max-w-6xl px-6">
                         <div className="flex flex-col items-center md:flex-row">
                             <div className="md:max-w-44 md:border-r md:pr-6">
-                                <p className="text-end text-sm text-muted-foreground">Trusted by innovators</p>
+                                <p className="text-end text-sm text-muted-foreground">Trusted by marketers</p>
                             </div>
                             <div className="relative py-6 md:w-[calc(100%-11rem)]">
                                 <InfiniteSlider
@@ -128,10 +130,10 @@ export function HeroSection() {
 }
 
 const menuItems = [
-    { name: 'Vision', href: '#vision' },
-    { name: 'Technology', href: '#technology' },
-    { name: 'Privacy', href: '#privacy' },
-    { name: 'About', href: '#about' },
+    { name: 'Platform', href: '#platform' },
+    { name: 'Use Cases', href: '#use-cases' },
+    { name: 'How It Works', href: '#how-it-works' },
+    { name: 'Pricing', href: '#pricing' },
 ]
 
 const HeroHeader = () => {
@@ -194,7 +196,7 @@ const HeroHeader = () => {
                                     size="sm"
                                     className="hover-lift">
                                     <Link to="#signup">
-                                        <span>Get Early Access</span>
+                                        <span>Start Free Trial</span>
                                     </Link>
                                 </Button>
                             </div>

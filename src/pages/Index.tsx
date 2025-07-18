@@ -1,7 +1,7 @@
 import React from 'react'
 import { HeroSection } from '@/components/hero-section'
 import { ValuePropositions } from '@/components/value-propositions'
-import { SneakPeek } from '@/components/sneak-peek'
+import { UseCasesAndProcess } from '@/components/use-cases-process'
 import { EmailSignup } from '@/components/email-signup'
 import { Footer } from '@/components/footer'
 
@@ -10,7 +10,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <HeroSection />
       <ValuePropositions />
-      <SneakPeek />
+      <UseCasesAndProcess />
       <EmailSignup />
       <Footer />
     </div>
