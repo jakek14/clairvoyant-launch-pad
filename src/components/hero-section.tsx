@@ -1,14 +1,16 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 import { InfiniteSlider } from '@/components/ui/infinite-slider'
 import { ProgressiveBlur } from '@/components/ui/progressive-blur'
 import { cn } from '@/lib/utils'
-import { Menu, X } from 'lucide-react'
-import heroAbstract from '@/assets/hero-abstract.jpg'
+import { Menu, X, ArrowRight } from 'lucide-react'
+import IconCloudDemo from '@/components/icon-cloud'
 
 export function HeroSection() {
+    const [email, setEmail] = useState('')
     return (
         <>
             <HeroHeader />
@@ -20,34 +22,30 @@ export function HeroSection() {
                                 <h1 className="mt-8 max-w-2xl text-balance text-5xl font-medium md:text-6xl lg:mt-16 xl:text-7xl">The Future of Intelligence is Personal</h1>
                                 <p className="mt-8 max-w-2xl text-pretty text-lg text-muted-foreground">Privacy-first intelligence that adapts to you. Experience personalized insights without compromising your data.</p>
 
-                                <div className="mt-12 flex flex-col items-center justify-center gap-2 sm:flex-row lg:justify-start">
-                                    <Button
-                                        asChild
-                                        size="lg"
-                                        className="px-8 text-base hover-lift">
-                                        <Link to="#signup">
-                                            <span className="text-nowrap">Join the Waitlist</span>
-                                        </Link>
-                                    </Button>
-                                    <Button
-                                        key={2}
-                                        asChild
-                                        size="lg"
-                                        variant="ghost"
-                                        className="px-8 text-base hover-lift">
-                                        <Link to="#learn-more">
-                                            <span className="text-nowrap">Learn More</span>
-                                        </Link>
-                                    </Button>
+                                <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start">
+                                    <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+                                        <Input
+                                            type="email"
+                                            placeholder="Enter your email"
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            className="flex-1 h-12 px-4 text-base bg-background border-2 focus:border-primary transition-colors min-w-[280px]"
+                                        />
+                                        <Button
+                                            asChild
+                                            size="lg"
+                                            className="px-8 text-base hover-lift group h-12">
+                                            <Link to="#signup">
+                                                <span className="text-nowrap">Join the Waitlist</span>
+                                                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                                            </Link>
+                                        </Button>
+                                    </div>
                                 </div>
                             </div>
-                            <img
-                                className="pointer-events-none order-first ml-auto h-56 w-full object-cover opacity-80 sm:h-96 lg:absolute lg:inset-0 lg:-right-20 lg:-top-96 lg:order-last lg:h-max lg:w-2/3 lg:object-contain"
-                                src={heroAbstract}
-                                alt="Abstract representation of intelligent technology"
-                                height="1080"
-                                width="1920"
-                            />
+                            <div className="pointer-events-none order-first ml-auto w-full lg:absolute lg:inset-0 lg:-right-20 lg:-top-32 lg:order-last lg:w-2/3 flex items-center justify-center">
+                                <IconCloudDemo />
+                            </div>
                         </div>
                     </div>
                 </section>
