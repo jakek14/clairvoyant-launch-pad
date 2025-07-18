@@ -8,7 +8,6 @@ import { cn } from '@/lib/utils'
 import { InfiniteSlider } from '@/components/ui/infinite-slider'
 import { ProgressiveBlur } from '@/components/ui/progressive-blur'
 import { HyperText } from '@/components/ui/hyper-text'
-import { SneakPeek } from '@/components/sneak-peek'
 
 
 const dynamicWords = [
@@ -118,8 +117,14 @@ export function HeroSection() {
                                 </form>
 
                 <div className="relative mt-16 mx-auto max-w-4xl">
-                    <div className="relative flex justify-center">
-                        <SneakPeek />
+                    <div className="relative">
+                        <img 
+                            src="/lovable-uploads/b4dc9b20-2391-4647-9330-007959961e78.png"
+                            alt="Earth globe showing global reach"
+                            className="w-full h-auto max-w-2xl mx-auto rounded-lg"
+                        />
+                        {/* Blur overlay for bottom portion */}
+                        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none" />
                     </div>
                 </div>
                             </AnimatedGroup>
