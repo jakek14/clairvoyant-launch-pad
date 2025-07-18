@@ -8,7 +8,6 @@ import { cn } from '@/lib/utils'
 import { InfiniteSlider } from '@/components/ui/infinite-slider'
 import { ProgressiveBlur } from '@/components/ui/progressive-blur'
 import { HyperText } from '@/components/ui/hyper-text'
-import { RotatingText } from '@/components/ui/animated-list'
 
 
 const dynamicWords = [
@@ -45,6 +44,15 @@ const transitionVariants = {
 
 export function HeroSection() {
     const [email, setEmail] = useState('')
+    const [currentWordIndex, setCurrentWordIndex] = useState(0)
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentWordIndex((prev) => (prev + 1) % dynamicWords.length)
+        }, 3000)
+        
+        return () => clearInterval(interval)
+    }, [])
 
     return (
         <main className="overflow-hidden">
@@ -66,11 +74,15 @@ export function HeroSection() {
                             >
                                 <h1 className="text-balance text-4xl font-medium sm:text-5xl md:text-6xl">
                                     Turn anonymous visitors into{' '}
-                                    <RotatingText
-                                        words={dynamicWords}
-                                        delay={2500}
-                                        className="text-primary font-bold min-h-[1.2em]"
-                                    />
+                                    <div className="inline-block min-h-[1.2em]">
+                                        <HyperText
+                                            key={currentWordIndex}
+                                            text={dynamicWords[currentWordIndex]}
+                                            className="text-primary font-bold"
+                                            duration={600}
+                                            animateOnLoad={true}
+                                        />
+                                    </div>
                                 </h1>
 
                                 <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg text-muted-foreground">
@@ -104,6 +116,17 @@ export function HeroSection() {
                                     </div>
                                 </form>
 
+                <div className="relative mt-16 mx-auto max-w-4xl">
+                    <div className="relative">
+                        <img 
+                            src="/lovable-uploads/b4dc9b20-2391-4647-9330-007959961e78.png"
+                            alt="Earth globe showing global reach"
+                            className="w-full h-auto max-w-2xl mx-auto rounded-lg"
+                        />
+                        {/* Blur overlay for bottom portion */}
+                        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none" />
+                    </div>
+                </div>
                             </AnimatedGroup>
                         </div>
                     </div>
