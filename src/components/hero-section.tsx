@@ -55,12 +55,9 @@ export function HeroSection() {
     }, [])
 
     return (
-        <>
-            <HeroHeader />
-
-            <main className="overflow-hidden">
-                <section>
-                    <div className="relative mx-auto max-w-6xl px-6 pt-32 lg:pb-16 lg:pt-48">
+        <main className="overflow-hidden">
+            <section>
+                <div className="relative mx-auto max-w-6xl px-6 pt-20 lg:pb-16 lg:pt-32">
                         <div className="relative z-10 mx-auto max-w-4xl text-center">
                             <AnimatedGroup
                                 variants={{
@@ -119,21 +116,12 @@ export function HeroSection() {
                                     </div>
                                 </form>
 
-                                <div
-                                    aria-hidden
-                                    className="bg-radial from-primary/50 dark:from-primary/25 relative mx-auto mt-32 max-w-2xl to-transparent to-55% text-left"
-                                >
-                                    <div className="bg-background border-border/50 absolute inset-0 mx-auto w-80 -translate-x-3 -translate-y-12 rounded-[2rem] border p-2 [mask-image:linear-gradient(to_bottom,#000_50%,transparent_90%)] sm:-translate-x-6">
-                                        <div className="relative h-96 overflow-hidden rounded-[1.5rem] border p-2 pb-12 before:absolute before:inset-0 before:bg-[repeating-linear-gradient(-45deg,var(--border),var(--border)_1px,transparent_1px,transparent_6px)] before:opacity-50"></div>
+                                <div className="relative mt-16 mx-auto max-w-lg">
+                                    <div className="relative">
+                                        <IconCloudDemo />
+                                        {/* Blur overlay for bottom portion */}
+                                        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none" />
                                     </div>
-                                    <div className="bg-muted dark:bg-background/50 border-border/50 mx-auto w-80 translate-x-4 rounded-[2rem] border p-2 backdrop-blur-3xl [mask-image:linear-gradient(to_bottom,#000_50%,transparent_90%)] sm:translate-x-8">
-                                        <div className="bg-background space-y-2 overflow-hidden rounded-[1.5rem] border p-2 shadow-xl dark:bg-white/5 dark:shadow-black dark:backdrop-blur-3xl">
-                                            <div className="scale-75 origin-center">
-                                                <IconCloudDemo />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] mix-blend-overlay [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] dark:opacity-5" />
                                 </div>
                             </AnimatedGroup>
                         </div>
@@ -141,123 +129,16 @@ export function HeroSection() {
                 </section>
                 <LogoCloud />
             </main>
-        </>
-    )
-}
-
-const menuItems = [
-    { name: 'Platform', href: '#platform' },
-    { name: 'Use Cases', href: '#use-cases' },
-    { name: 'How It Works', href: '#how-it-works' },
-    { name: 'Pricing', href: '#pricing' },
-]
-
-const HeroHeader = () => {
-    const [menuState, setMenuState] = React.useState(false)
-    const [isScrolled, setIsScrolled] = React.useState(false)
-
-    React.useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50)
-        }
-        window.addEventListener('scroll', handleScroll)
-        return () => window.removeEventListener('scroll', handleScroll)
-    }, [])
-
-    return (
-        <header>
-            <nav
-                data-state={menuState && 'active'}
-                className="fixed group z-20 w-full px-2">
-                <div className={cn('mx-auto mt-2 max-w-6xl px-6 transition-all duration-300 lg:px-12', isScrolled && 'bg-background/50 max-w-4xl rounded-2xl border backdrop-blur-lg lg:px-5')}>
-                    <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
-                        <div className="flex w-full justify-between lg:w-auto">
-                            <Link
-                                to="/"
-                                aria-label="home"
-                                className="flex items-center space-x-2">
-                                <Logo />
-                            </Link>
-
-                            <button
-                                onClick={() => setMenuState(!menuState)}
-                                aria-label={menuState == true ? 'Close Menu' : 'Open Menu'}
-                                className="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 lg:hidden">
-                                <Menu className="group-data-[state=active]:rotate-180 group-data-[state=active]:scale-0 group-data-[state=active]:opacity-0 m-auto size-6 duration-200" />
-                                <X className="group-data-[state=active]:rotate-0 group-data-[state=active]:scale-100 group-data-[state=active]:opacity-100 absolute inset-0 m-auto size-6 -rotate-180 scale-0 opacity-0 duration-200" />
-                            </button>
-                        </div>
-
-                        <div className="absolute inset-0 m-auto hidden size-fit lg:block">
-                            <ul className="flex gap-8 text-sm">
-                                {menuItems.map((item, index) => (
-                                    <li key={index}>
-                                        <Link
-                                            to={item.href}
-                                            className="text-muted-foreground hover:text-foreground block duration-150">
-                                            <span>{item.name}</span>
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        <div className="bg-background group-data-[state=active]:block lg:group-data-[state=active]:flex mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl shadow-zinc-300/20 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:shadow-none dark:lg:bg-transparent">
-                            <div className="lg:hidden">
-                                <ul className="space-y-6 text-base">
-                                    {menuItems.map((item, index) => (
-                                        <li key={index}>
-                                            <Link
-                                                to={item.href}
-                                                className="text-muted-foreground hover:text-foreground block duration-150">
-                                                <span>{item.name}</span>
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
-                                <Button
-                                    asChild
-                                    variant="outline"
-                                    size="sm"
-                                    className={cn(isScrolled && 'lg:hidden')}>
-                                    <Link to="#signup">
-                                        <span>Login</span>
-                                    </Link>
-                                </Button>
-                                <Button
-                                    asChild
-                                    size="sm"
-                                    className={cn(isScrolled && 'lg:hidden')}>
-                                    <Link to="#signup">
-                                        <span>Sign Up</span>
-                                    </Link>
-                                </Button>
-                                <Button
-                                    asChild
-                                    size="sm"
-                                    className={cn(isScrolled ? 'lg:inline-flex' : 'hidden')}>
-                                    <Link to="#signup">
-                                        <span>Get Started</span>
-                                    </Link>
-                                </Button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </header>
     )
 }
 
 const LogoCloud = () => {
     return (
-        <section className="bg-background pb-16 md:pb-32">
+        <section className="bg-background pb-16 md:pb-32 -mt-16 pt-16">
             <div className="group relative m-auto max-w-6xl px-6">
                 <div className="flex flex-col items-center md:flex-row">
                     <div className="inline md:max-w-44 md:border-r md:pr-6">
-                        <p className="text-end text-sm text-muted-foreground">Trusted by marketers</p>
+                        <p className="text-end text-sm text-muted-foreground">Powered by</p>
                     </div>
                     <div className="relative py-6 md:w-[calc(100%-11rem)]">
                         <InfiniteSlider
@@ -267,45 +148,116 @@ const LogoCloud = () => {
                             <div className="flex">
                                 <img
                                     className="mx-auto h-5 w-fit opacity-60"
-                                    src="https://html.tailus.io/blocks/customers/nvidia.svg"
-                                    alt="Technology Leader"
-                                    height="20"
-                                    width="auto"
-                                />
-                            </div>
-
-                            <div className="flex">
-                                <img
-                                    className="mx-auto h-4 w-fit opacity-60"
-                                    src="https://html.tailus.io/blocks/customers/github.svg"
-                                    alt="Developer Platform"
-                                    height="16"
-                                    width="auto"
-                                />
-                            </div>
-                            <div className="flex">
-                                <img
-                                    className="mx-auto h-5 w-fit opacity-60"
-                                    src="https://html.tailus.io/blocks/customers/openai.svg"
-                                    alt="AI Research"
+                                    src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/google.svg"
+                                    alt="Google"
                                     height="20"
                                     width="auto"
                                 />
                             </div>
                             <div className="flex">
                                 <img
-                                    className="mx-auto h-4 w-fit opacity-60"
-                                    src="https://html.tailus.io/blocks/customers/laravel.svg"
-                                    alt="Technology Framework"
-                                    height="16"
+                                    className="mx-auto h-5 w-fit opacity-60"
+                                    src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/meta.svg"
+                                    alt="Meta"
+                                    height="20"
                                     width="auto"
                                 />
                             </div>
                             <div className="flex">
                                 <img
                                     className="mx-auto h-5 w-fit opacity-60"
-                                    src="https://html.tailus.io/blocks/customers/lemonsqueezy.svg"
-                                    alt="Platform Partner"
+                                    src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg"
+                                    alt="Facebook"
+                                    height="20"
+                                    width="auto"
+                                />
+                            </div>
+                            <div className="flex">
+                                <img
+                                    className="mx-auto h-5 w-fit opacity-60"
+                                    src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg"
+                                    alt="Instagram"
+                                    height="20"
+                                    width="auto"
+                                />
+                            </div>
+                            <div className="flex">
+                                <img
+                                    className="mx-auto h-5 w-fit opacity-60"
+                                    src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/tiktok.svg"
+                                    alt="TikTok"
+                                    height="20"
+                                    width="auto"
+                                />
+                            </div>
+                            <div className="flex">
+                                <img
+                                    className="mx-auto h-5 w-fit opacity-60"
+                                    src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/snapchat.svg"
+                                    alt="Snapchat"
+                                    height="20"
+                                    width="auto"
+                                />
+                            </div>
+                            <div className="flex">
+                                <img
+                                    className="mx-auto h-5 w-fit opacity-60"
+                                    src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/pinterest.svg"
+                                    alt="Pinterest"
+                                    height="20"
+                                    width="auto"
+                                />
+                            </div>
+                            <div className="flex">
+                                <img
+                                    className="mx-auto h-5 w-fit opacity-60"
+                                    src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg"
+                                    alt="LinkedIn"
+                                    height="20"
+                                    width="auto"
+                                />
+                            </div>
+                            <div className="flex">
+                                <img
+                                    className="mx-auto h-5 w-fit opacity-60"
+                                    src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg"
+                                    alt="Twitter"
+                                    height="20"
+                                    width="auto"
+                                />
+                            </div>
+                            <div className="flex">
+                                <img
+                                    className="mx-auto h-5 w-fit opacity-60"
+                                    src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/reddit.svg"
+                                    alt="Reddit"
+                                    height="20"
+                                    width="auto"
+                                />
+                            </div>
+                            <div className="flex">
+                                <img
+                                    className="mx-auto h-5 w-fit opacity-60"
+                                    src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg"
+                                    alt="YouTube"
+                                    height="20"
+                                    width="auto"
+                                />
+                            </div>
+                            <div className="flex">
+                                <img
+                                    className="mx-auto h-5 w-fit opacity-60"
+                                    src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/amazon.svg"
+                                    alt="Amazon"
+                                    height="20"
+                                    width="auto"
+                                />
+                            </div>
+                            <div className="flex">
+                                <img
+                                    className="mx-auto h-5 w-fit opacity-60"
+                                    src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/shopify.svg"
+                                    alt="Shopify"
                                     height="20"
                                     width="auto"
                                 />
@@ -329,13 +281,3 @@ const LogoCloud = () => {
     )
 }
 
-const Logo = ({ className }: { className?: string }) => {
-    return (
-        <div className={cn('flex items-center space-x-3', className)}>
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold text-lg">
-                S
-            </div>
-            <span className="text-xl font-semibold">sera</span>
-        </div>
-    )
-}
