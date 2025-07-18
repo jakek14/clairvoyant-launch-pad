@@ -29,7 +29,7 @@ export function HeroSection() {
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentWordIndex((prev) => (prev + 1) % dynamicWords.length)
-        }, 2500)
+        }, 3000)
         
         return () => clearInterval(interval)
     }, [])
@@ -38,17 +38,18 @@ export function HeroSection() {
         <main className="overflow-x-hidden">
             <section>
                 <div className="pb-24 pt-20 md:pb-32 lg:pb-56 lg:pt-32">
-                    <div className="relative mx-auto flex max-w-6xl flex-col px-6 lg:block">
-                        <div className="mx-auto max-w-2xl text-center lg:ml-0 lg:w-1/2 lg:text-left">
+                    <div className="relative mx-auto flex max-w-7xl flex-col px-6 lg:block">
+                        <div className="mx-auto max-w-3xl text-center lg:ml-0 lg:w-3/5 lg:text-left">
                             <div className="mt-8 lg:mt-16">
-                                <h1 className="text-5xl font-medium md:text-6xl xl:text-7xl leading-tight">
+                                <h1 className="text-4xl font-medium md:text-5xl lg:text-6xl xl:text-7xl leading-tight">
                                     Turn anonymous visitors into{' '}
-                                    <div className="inline-block">
+                                    <div className="inline-block min-h-[1.2em]">
                                         <HyperText
+                                            key={currentWordIndex}
                                             text={dynamicWords[currentWordIndex]}
                                             className="text-primary font-bold"
                                             duration={600}
-                                            animateOnLoad={false}
+                                            animateOnLoad={true}
                                         />
                                     </div>
                                 </h1>
@@ -76,8 +77,8 @@ export function HeroSection() {
                                 </div>
                             </div>
                         </div>
-                        <div className="pointer-events-none order-first ml-auto w-full lg:absolute lg:inset-0 lg:-right-20 lg:-top-8 lg:order-last lg:w-3/5 flex items-center justify-center">
-                            <div className="scale-110 lg:scale-125">
+                        <div className="pointer-events-none order-first ml-auto w-full lg:absolute lg:inset-0 lg:-right-16 lg:-top-4 lg:order-last lg:w-2/5 flex items-center justify-center">
+                            <div className="scale-100 lg:scale-110">
                                 <IconCloudDemo />
                             </div>
                         </div>

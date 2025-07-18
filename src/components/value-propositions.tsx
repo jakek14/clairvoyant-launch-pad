@@ -1,109 +1,79 @@
 import React from 'react'
-import { motion } from 'framer-motion'
-import { Eye, Database, DollarSign, Mail, Users } from 'lucide-react'
+import { 
+  EyeOpenIcon, 
+  LockClosedIcon, 
+  CounterClockwiseClockIcon, 
+  ComponentInstanceIcon, 
+  ReloadIcon 
+} from '@radix-ui/react-icons'
+import { BentoCard, BentoGrid } from '@/components/ui/bento-grid'
 
-const valueProps = [
+const features = [
   {
-    icon: Eye,
-    title: "Anonymous Traffic Identification",
-    description: "Track and identify anonymous website visitors using our proprietary pixel technology that matches visitor sessions against our comprehensive opt-in database."
+    Icon: EyeOpenIcon,
+    name: "Anonymous Traffic Identification",
+    description: "Track and identify anonymous website visitors through our proprietary pixel technology, matching sessions against our comprehensive opt-in database.",
+    href: "#",
+    cta: "Learn more",
+    background: <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-100 opacity-50" />,
+    className: "lg:row-start-1 lg:row-end-3 lg:col-start-1 lg:col-end-2",
   },
   {
-    icon: Database,
-    title: "First-Party Data Ownership",
-    description: "Own your matched visitor data forever. No more renting lists from ad platforms—integrate contact information directly into your CRM and marketing tools."
+    Icon: ComponentInstanceIcon,
+    name: "First-Party Data Ownership",
+    description: "Own your visitor data completely—get full contact records including email and postal addresses without ongoing rental fees from ad platforms.",
+    href: "#",
+    cta: "Learn more",
+    background: <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-emerald-100 opacity-50" />,
+    className: "lg:col-start-2 lg:col-end-4 lg:row-start-1 lg:row-end-2",
   },
   {
-    icon: DollarSign,
-    title: "Cost-Efficient Retargeting",
-    description: "Pay once for contact information instead of per click. More affordable than traditional retargeting with higher conversion rates and lower ongoing costs."
+    Icon: CounterClockwiseClockIcon,
+    name: "Cost-Efficient Retargeting",
+    description: "Pay once for matched contact information instead of per-click retargeting. More affordable than traditional click-based advertising campaigns.",
+    href: "#",
+    cta: "Learn more",
+    background: <div className="absolute inset-0 bg-gradient-to-br from-yellow-50 to-orange-100 opacity-50" />,
+    className: "lg:col-start-2 lg:col-end-3 lg:row-start-2 lg:row-end-4",
   },
   {
-    icon: Mail,
-    title: "Opt-in Compliance",
-    description: "All data comes from permission-based, opt-in sources ensuring full compliance with CAN-SPAM, GDPR, and other privacy regulations."
+    Icon: LockClosedIcon,
+    name: "Opt-in Compliance",
+    description: "All data sourced from permission-based, opt-in databases ensuring full compliance with CAN-SPAM and other privacy regulations.",
+    href: "#",
+    cta: "Learn more",
+    background: <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-violet-100 opacity-50" />,
+    className: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
   },
   {
-    icon: Users,
-    title: "Multi-Channel Retargeting",
-    description: "Reach customers through email, direct mail, phone, or upload to ad platforms—using contact data you own and control."
-  }
+    Icon: ReloadIcon,
+    name: "Multi-Channel Retargeting",
+    description: "Use acquired data across email, direct mail, phone outreach, or upload to ad platforms—complete flexibility in your marketing approach.",
+    href: "#",
+    cta: "Learn more",
+    background: <div className="absolute inset-0 bg-gradient-to-br from-pink-50 to-rose-100 opacity-50" />,
+    className: "lg:col-start-3 lg:col-end-4 lg:row-start-2 lg:row-end-4",
+  },
 ]
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2
-    }
-  }
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.16, 1, 0.3, 1] as const
-    }
-  }
-}
 
 export function ValuePropositions() {
   return (
-    <section id="platform" className="py-24 md:py-32 bg-gradient-to-b from-background to-secondary/30">
+    <section className="py-24 bg-background">
       <div className="mx-auto max-w-6xl px-6">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-          className="text-center mb-20"
-        >
-          <motion.h2 
-            variants={itemVariants}
-            className="text-4xl md:text-5xl font-semibold mb-6"
-          >
-            Core 
-            <span className="text-gradient"> Capabilities</span>
-          </motion.h2>
-          <motion.p 
-            variants={itemVariants}
-            className="text-lg text-muted-foreground max-w-2xl mx-auto"
-          >
-            Transform anonymous website traffic into actionable contact data with our patent-pending platform.
-          </motion.p>
-        </motion.div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          {valueProps.map((prop, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className="group relative p-8 rounded-2xl border bg-card hover-lift cursor-pointer"
-            >
-              <div className="mb-6">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors duration-300">
-                  <prop.icon className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3">{prop.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{prop.description}</p>
-              </div>
-              
-              {/* Hover effect */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/5 to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-            </motion.div>
+        <div className="mx-auto max-w-2xl text-center mb-16">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            Core Capabilities
+          </h2>
+          <p className="mt-6 text-lg text-muted-foreground">
+            Transform your anonymous website traffic into actionable contact data with our patent-pending platform
+          </p>
+        </div>
+        
+        <BentoGrid className="lg:grid-rows-3">
+          {features.map((feature) => (
+            <BentoCard key={feature.name} {...feature} />
           ))}
-        </motion.div>
+        </BentoGrid>
       </div>
     </section>
   )
