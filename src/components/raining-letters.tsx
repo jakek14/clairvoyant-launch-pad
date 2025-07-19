@@ -71,7 +71,7 @@ const RainingLetters: React.FC = () => {
   }, [])
 
   return (
-    <div className="relative w-full h-screen bg-white overflow-hidden">
+    <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
       {characters.map((char, index) => (
         <span
           key={index}
