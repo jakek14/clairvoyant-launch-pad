@@ -34,12 +34,8 @@ const RainingLetters: React.FC = () => {
 
   useEffect(() => {
     const updateActiveIndices = () => {
-      const newActiveIndices = new Set<number>()
-      const numActive = Math.floor(Math.random() * 3) + 3
-      for (let i = 0; i < numActive; i++) {
-        newActiveIndices.add(Math.floor(Math.random() * characters.length))
-      }
-      setActiveIndices(newActiveIndices)
+      // Removed the blue flashing effect - no more active indices
+      setActiveIndices(new Set())
     }
 
     const flickerInterval = setInterval(updateActiveIndices, 50)
@@ -72,30 +68,30 @@ const RainingLetters: React.FC = () => {
 
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
-      {characters.map((char, index) => (
-        <span
-          key={index}
-          className={`absolute text-xs transition-colors duration-100 ${
-            activeIndices.has(index)
-              ? "text-blue-700 text-base scale-125 z-10 font-bold animate-pulse"
-              : "text-gray-600 font-light"
-          }`}
-          style={{
-            left: `${char.x}%`,
-            top: `${char.y}%`,
-            transform: `translate(-50%, -50%) ${activeIndices.has(index) ? 'scale(1.25)' : 'scale(1)'}`,
-            textShadow: activeIndices.has(index) 
-              ? '0 0 8px rgba(37,99,235,0.8), 0 0 12px rgba(37,99,235,0.4)' 
-              : 'none',
-            opacity: activeIndices.has(index) ? 1 : 0.4,
-            transition: 'color 0.1s, transform 0.1s, text-shadow 0.1s',
-            willChange: 'transform, top',
-            fontSize: '1.8rem'
-          }}
-        >
-          {char.char}
-        </span>
-      ))}
+      {characters.map((char, index) => {
+        // Check if character is in the hero content area (roughly center area)
+        const isInHeroArea = char.x > 20 && char.x < 80 && char.y > 20 && char.y < 80
+        const shouldBlur = isInHeroArea
+        
+        return (
+          <span
+            key={index}
+            className="absolute text-xs font-light text-gray-600"
+            style={{
+              left: `${char.x}%`,
+              top: `${char.y}%`,
+              transform: 'translate(-50%, -50%)',
+              opacity: shouldBlur ? 0.1 : 0.4,
+              filter: shouldBlur ? 'blur(3px)' : 'none',
+              transition: 'opacity 0.3s, filter 0.3s',
+              willChange: 'transform, top',
+              fontSize: '1.8rem'
+            }}
+          >
+            {char.char}
+          </span>
+        )
+      })}
     </div>
   )
 }
