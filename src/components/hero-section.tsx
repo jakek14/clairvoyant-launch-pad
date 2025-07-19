@@ -50,7 +50,7 @@ export function HeroSection() {
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentWordIndex((prev) => (prev + 1) % dynamicWords.length)
-        }, 3000)
+        }, 4000) // Increased to 4 seconds to allow HyperText to fully complete
         
         return () => clearInterval(interval)
     }, [])
@@ -75,13 +75,13 @@ export function HeroSection() {
                                 }}
                             >
                                 <h1 className="text-balance text-4xl font-medium sm:text-5xl md:text-6xl">
-                                    Turn anonymous visitors into{' '}
+                                    Turn anonymous visitors<br />into{' '}
                                     <div className="inline-block min-h-[1.2em]">
                                         <HyperText
                                             key={currentWordIndex}
                                             text={dynamicWords[currentWordIndex]}
                                             className="text-primary font-bold"
-                                            duration={600}
+                                            duration={800}
                                             animateOnLoad={true}
                                         />
                                     </div>

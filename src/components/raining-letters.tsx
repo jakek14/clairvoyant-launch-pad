@@ -71,23 +71,23 @@ const RainingLetters: React.FC = () => {
   }, [])
 
   return (
-    <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
+    <div className="relative w-full h-screen bg-white overflow-hidden">
       {characters.map((char, index) => (
         <span
           key={index}
           className={`absolute text-xs transition-colors duration-100 ${
             activeIndices.has(index)
-              ? "text-primary/60 text-base scale-125 z-10 font-bold animate-pulse"
-              : "text-muted-foreground/20 font-light"
+              ? "text-blue-700 text-base scale-125 z-10 font-bold animate-pulse"
+              : "text-gray-600 font-light"
           }`}
           style={{
             left: `${char.x}%`,
             top: `${char.y}%`,
             transform: `translate(-50%, -50%) ${activeIndices.has(index) ? 'scale(1.25)' : 'scale(1)'}`,
             textShadow: activeIndices.has(index) 
-              ? '0 0 8px hsl(var(--primary) / 0.8), 0 0 12px hsl(var(--primary) / 0.4)' 
+              ? '0 0 8px rgba(37,99,235,0.8), 0 0 12px rgba(37,99,235,0.4)' 
               : 'none',
-            opacity: activeIndices.has(index) ? 0.8 : 0.2,
+            opacity: activeIndices.has(index) ? 1 : 0.4,
             transition: 'color 0.1s, transform 0.1s, text-shadow 0.1s',
             willChange: 'transform, top',
             fontSize: '1.8rem'
