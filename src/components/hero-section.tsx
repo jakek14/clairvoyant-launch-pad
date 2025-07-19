@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils'
 import { InfiniteSlider } from '@/components/ui/infinite-slider'
 import { ProgressiveBlur } from '@/components/ui/progressive-blur'
 import { HyperText } from '@/components/ui/hyper-text'
+import RainingLetters from '@/components/raining-letters'
 
 
 const dynamicWords = [
@@ -56,8 +57,9 @@ export function HeroSection() {
 
     return (
         <main className="overflow-hidden">
-            <section>
-                <div className="relative mx-auto max-w-6xl px-6 pt-20 lg:pb-16 lg:pt-32">
+            <section className="relative">
+                <RainingLetters />
+                <div className="relative mx-auto max-w-6xl px-6 pt-20 lg:pb-16 lg:pt-32 z-10">
                         <div className="relative z-10 mx-auto max-w-4xl text-center">
                             <AnimatedGroup
                                 variants={{
